@@ -25,20 +25,9 @@ for (filename in files) {
   to_utf8(filename)
 }
 
-# 「2003年衆院選-04年参院選-05年衆院選世論調査」（東京大学谷口研究室・朝日新聞共同調査）
-# のExcelデータをダウンロードする
-# http://www.masaki.j.u-tokyo.ac.jp/utas/utasv.html
-files <- download_and_extract("http://www.masaki.j.u-tokyo.ac.jp/utas/utas060104xls.zip")
-
-# Excelデータから q010601 列を切り出して cabsup.csv を作る
-library(readxl)
-utasdata <- read_excel("utas060104.xls")
-data <- utasdata['q010601']
-names(data) <- c("cabsup")
-write.csv(data, "cabsup.csv", row.names=FALSE)
-
 # 利用するいつものデータ
 #trialdata.xlsという新しいデータを秦のサーバ（遊戯王で言えばデッキ？）からfiles2という名前で入れ込む（遊戯王で言えば手札？）に！
+library(readxl)
 trialdata <- download_and_extract("http://hatam.sakura.ne.jp/trialdata.zip")
 #trialdataという名前のファイルをhatadataという愛称をつけて呼び出す（召喚！）
 hatadata <- read_excel("trialdata.xls")
