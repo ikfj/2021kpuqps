@@ -36,3 +36,11 @@ utasdata <- read_excel("utas060104.xls")
 data <- utasdata['q010601']
 names(data) <- c("cabsup")
 write.csv(data, "cabsup.csv", row.names=FALSE)
+
+# 利用するいつものデータ
+#trialdata.xlsという新しいデータを秦のサーバ（遊戯王で言えばデッキ？）からfiles2という名前で入れ込む（遊戯王で言えば手札？）に！
+trialdata <- download_and_extract("http://hatam.sakura.ne.jp/trialdata.zip")
+#trialdataという名前のファイルをhatadataという愛称をつけて呼び出す（召喚！）
+hatadata <- read_excel("trialdata.xls")
+#これ以降，hatadata以外のデータは受け付けないという魔法効果的やおまじない
+attach(hatadata)
