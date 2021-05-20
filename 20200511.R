@@ -1,4 +1,9 @@
 #いつものデータを入れる
+library(readxl)
+#install.packages("gplots") #インストールしたらこの行は消してOK
+library(gplots)
+
+#いつものデータを入れる
 data<-read_excel("trialdata.xls")
 #以下の分析では"data2020"でお願いね!
 attach(data)
