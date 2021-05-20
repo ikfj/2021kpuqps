@@ -1,4 +1,8 @@
 #いつものデータを入れる
+library(readxl)
+library(gplots)
+
+#いつものデータを入れる
 data2020<-read_excel("trialdata.xls")
 #以下の分析では"data2020"でお願いね!
 attach(data2020)
