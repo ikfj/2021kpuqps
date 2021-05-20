@@ -1,17 +1,3 @@
-#以下10行目までは呪文
-# ZIPファイルをダウンロードして解凍
-download_and_extract <- function(url) {
-  tmp <- tempfile()
-  download.file(url, tmp)
-  files <- unzip(tmp)
-  unlink(tmp)
-  return(files)
-}
-par(family= "HiraKakuProN-W3")
-
-
-#↓から授業内容
-
 #いつものデータを入れる
 data<-read_excel("trialdata.xls")
 #以下の分析では"data2020"でお願いね!
