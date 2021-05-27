@@ -20,8 +20,6 @@ edu_per <- prop.table(edu1)*100
 edu_per
 
 #支持政党（アウトカム側）の処理
-#まずは簡単に政党支持者の割合を見てみよう
-table(q11_1)
 
 #欠損値(10と11）の処理
 pid <- q11_1
@@ -34,33 +32,22 @@ pid[q11_1== 2|q11_1== 3|q11_1== 4|q11_1== 6|q11_1== 7|q11_1== 8] <- "2"
 #無党派:「9.支持する政党はない」を"3"
 pid[q11_1== 9] <- "3"
 
-#単純度数をpid1で格納
-pid1 <- table(pid)
-#パーセントで見てみる（パーセンタイルなので100倍にする）
-pid_per <- prop.table(pid1)*100
-pid_per
-#まとめてみたい
-cbind(pid1, pid_per)
-
 #さて，クロス表を見てみよう！
-prop.table(table(edu,pid),margin = 1)
-#うーんわかりずらい！
 prop.table(table(edu,pid),margin = 1)*100
 
 
 #数字じゃわかりずれぇなぁ
 pid_n <- pid
 #与党:自民+公明を"与党"
-pid_n[pid== 1] <- "government_party"
+pid_n[pid== 1] <- "与党"
 #野党:自民+公明以外を"2"
-pid_n[pid== 2] <- "opposit_party"
+pid_n[pid== 2] <- "野党"
 #無党派:「9.支持する政党はない」を"3"
-pid_n[pid== 3] <- "independent"
+pid_n[pid== 3] <- "無党派"
 
 
 #少数桁も多いのでだるい．2桁までにしてクロス表を見てみよう！
 round(prop.table(table(edu, pid_n),1)*100,2)
-
 
 #教育程度も3段階でラベル付けしてみよう
 edu_n <- edu
@@ -102,14 +89,14 @@ round(prop.table(table(generation, pid_n),1)*100,1)
 #########################################################################
 #########################################################################
 #########################################################################
-#ここから11/09日分
+#ここから6/1分
 
 #性別ごとの平均値の比較
 
 #性別
 gender <- sex
-gender[sex==1] <- "male"
-gender[sex==0] <- "female"
+gender[sex==1] <- "男性"
+gender[sex==0] <- "女性"
 
 table(gender)
 
@@ -117,9 +104,9 @@ table(gender)
 #数字じゃわかりずれぇなぁ
 pid2 <- pid
 #どこかの政党を支持していたら（pid変数が1もしくは2）は"party supporter"
-pid2[pid == 1|pid == 2] <- "party supporter"
+pid2[pid == 1|pid == 2] <- "支持政党あり"
 #無党派はindependent
-pid2[pid== 3] <- "independent"
+pid2[pid== 3] <- "支持政党なし"
 
 #クロス表
 round(prop.table(table(gender,pid2),1)*100,1)
