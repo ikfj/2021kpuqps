@@ -6,3 +6,4 @@ dependencies:
   - r-dygraphs
   - r-purrr
   - r-arm
+  - r-gplots
